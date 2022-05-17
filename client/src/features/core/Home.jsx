@@ -1,21 +1,24 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import styles from "./Home.module.css";
 import { useNavigate } from "react-router-dom";
+import { setLoginData, setJoinRoomOption } from "../reducers/loginSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const Home = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const [joinRoom, setJoinRoom] = useState(false);
+  const joinRoomOption = useSelector((state) => state.login.joinRoomOption);
   const nameInputRef = useRef();
   const roomInputRef = useRef("");
 
-  const formSubmitHandler = (event) => {
-    event.preventDefault();
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
     const enteredUserName = nameInputRef.current.value;
     const enteredRoomId = roomInputRef.current.value;
-    navigate("/waiting-room", {
-      state: { username: enteredUserName, roomId: enteredRoomId },
-    });
+
+    dispatch(setLoginData({ enteredUserName, enteredRoomId, joinRoomOption }));
+    navigate("/waiting-room");
   };
 
   return (
@@ -28,7 +31,7 @@ const Home = () => {
           ref={nameInputRef}
           required={true}
         />
-        {!joinRoom ? (
+        {!joinRoomOption ? (
           <button>Create Room</button>
         ) : (
           <>
@@ -45,8 +48,8 @@ const Home = () => {
         <input
           placeholder="I already have room Id"
           type="checkbox"
-          checked={joinRoom}
-          onChange={() => setJoinRoom(!joinRoom)}
+          checked={joinRoomOption}
+          onChange={() => dispatch(setJoinRoomOption(!joinRoomOption))}
         />
       </form>
     </div>

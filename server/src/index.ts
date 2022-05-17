@@ -10,6 +10,8 @@ import createRoom from "./controllers/room/createRoom";
 import joinRoom from "./controllers/room/joinRoom";
 import deleteRoom from "./controllers/room/deleteRoom";
 
+import startGame from "./controllers/game/startGame";
+
 const app: Express = express();
 
 mongoose
@@ -37,11 +39,11 @@ const StartServer = () => {
   });
 
   io.on("connection", (socket: Socket) => {
-    console.log("New client connected");
-
+    console.log(io.allSockets());
     createRoom(socket, io);
     joinRoom(socket, io);
     deleteRoom(socket, io);
+    startGame(socket, io);
   });
 
   app.use((req: Request, res: Response, next: NextFunction) => {

@@ -45,8 +45,11 @@ const createRoom = (socket: Socket, io: Server) => {
         room.users.push(gameUser);
         await room.save();
 
+        socket.join(room.roomId);
+
         io.to(socket.id).emit("created_success", {
           roomId: room.roomId,
+          players: room.users,
         });
       } catch (err) {
         io.to(socket.id).emit("fail", {

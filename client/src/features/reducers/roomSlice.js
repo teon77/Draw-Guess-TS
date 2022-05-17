@@ -1,11 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import io from "./socketConnection";
 
 const initialState = {
   roomId: "",
   message: "",
-  success: false,
-  ready: false,
+  showError: false,
   players: [],
 };
 
@@ -13,14 +11,15 @@ export const roomSlice = createSlice({
   name: "room",
   initialState,
   reducers: {
-    setWaitingRoomData: (state, action) => {
+    setWaitingData: (state, action) => {
       state.roomId = action.payload.roomId;
       state.message = action.payload.message;
-      state.players.push(action.payload.username);
+      state.showError = action.payload.showError;
+      state.players = action.payload.players;
     },
   },
 });
 
-export const { setWaitingRoomData, createRoom, joinRoom } = roomSlice.actions;
+export const { setWaitingData } = roomSlice.actions;
 
 export default roomSlice.reducer;

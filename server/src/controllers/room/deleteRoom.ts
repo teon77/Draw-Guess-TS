@@ -6,16 +6,17 @@ const deleteRoom = (socket: Socket, io: Server) => {
   socket.on("disconnect", async () => {
     try {
       // find user with userId equal to socket.id and delete it
-      const user = await User.findOneAndDelete({ userId: socket.id });
+      const user = await User.findOneAndDelete({ userId: socket.id }).exec();
+
       if (user) {
         // find room with roomId equal to user.roomId and delete it if its empty
-        const room = await Room.findOne({ roomId: user.roomId });
+        const room = await Room.findOne({ roomId: user.roomId }).exec();
         if (room) {
           // remove user from room
           room.users = room.users.filter((u) => u.userId !== socket.id);
           await room.save();
           if (room.users.length === 0) {
-            await Room.deleteOne({ roomId: user.roomId });
+            await Room.deleteOne({ roomId: user.roomId }).exec();
           }
         }
       }

@@ -20,7 +20,7 @@ const joinRoom = (socket: Socket, io: Server) => {
           return;
         }
 
-        const room = await Room.findOne({ roomId });
+        const room = await Room.findOne({ roomId }).exec();
 
         if (!room) {
           io.to(socket.id).emit("fail", {
@@ -59,6 +59,8 @@ const joinRoom = (socket: Socket, io: Server) => {
 
         room.users.push(gameUser);
         await room.save();
+
+        socket.join(room.roomId);
 
         io.to(room.roomId).emit("joined_success", {
           roomId: room.roomId,

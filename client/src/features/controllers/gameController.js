@@ -1,7 +1,16 @@
-import { setGameData } from "../reducers/gameSlice";
+import { setGameData, setIsDrawing } from "../reducers/gameSlice";
 
 const socketGameController = (socket, store) => {
-  socket.on("game_data", ({ gameData }) => {});
+  socket.on("start_game", ({ playerTurnId, playerTurnName, readyToStart }) => {
+    store.dispatch(
+      setGameData({
+        readyToStart,
+        playerTurnId,
+        playerTurnName,
+      })
+    );
+    setIsDrawing(socket.id === playerTurnId);
+  });
 };
 
 export default socketGameController;

@@ -1,17 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = {
+  readyToStart: false,
+  playerTurnId: "",
+  playerTurnName: "",
+  isDrawing: false,
+};
 
 export const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
     setGameData: (state, action) => {
-      state.gameData = action.payload;
+      state.readyToStart = action.payload.readyToStart;
+      state.playerTurnId = action.payload.playerTurnId;
+      state.playerTurnName = action.payload.playerTurnName;
+    },
+    setIsDrawing: (state, action) => {
+      state.isDrawing = action.payload;
     },
   },
 });
 
-export const { setGameData } = gameSlice.actions;
+export const { setGameData, setIsDrawing } = gameSlice.actions;
 
 export default gameSlice.reducer;

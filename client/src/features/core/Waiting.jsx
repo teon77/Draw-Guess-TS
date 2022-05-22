@@ -19,6 +19,8 @@ const Waiting = () => {
     (state) => state.room
   );
 
+  const readyToStart = useSelector((state) => state.game.readyToStart);
+
   const copyToClipboard = useCallback(async (text) => {
     if ("clipboard" in navigator) {
       await navigator.clipboard.writeText(text);
@@ -27,7 +29,6 @@ const Waiting = () => {
   }, []);
 
   const handleStartGame = useCallback(() => {
-    console.log("handleStartGame");
     dispatch({ type: "START_GAME", payload: { roomId } });
   }, [dispatch, roomId]);
 
@@ -36,7 +37,7 @@ const Waiting = () => {
   }, [navigate]);
 
   useEffect(() => {
-    if (joinRoomOption && enteredRoomId && enteredUserName) {
+    if (joinRoomOption && enteredRoomId && enteredUserName && !readyToStart) {
       dispatch({ type: "SOCKET_CONNECT" });
       dispatch({
         type: "JOIN_ROOM",
@@ -45,11 +46,20 @@ const Waiting = () => {
           roomId: enteredRoomId,
         },
       });
-    } else if (enteredUserName) {
+    } else if (enteredUserName && !readyToStart) {
       dispatch({ type: "SOCKET_CONNECT" });
       dispatch({ type: "CREATE_ROOM", payload: { username: enteredUserName } });
+    } else if (readyToStart) {
+      navigate("/game");
     }
-  }, [dispatch, enteredRoomId, enteredUserName, joinRoomOption]);
+  }, [
+    dispatch,
+    enteredRoomId,
+    enteredUserName,
+    joinRoomOption,
+    readyToStart,
+    navigate,
+  ]);
 
   return (
     <div className={styles.waiting_room}>

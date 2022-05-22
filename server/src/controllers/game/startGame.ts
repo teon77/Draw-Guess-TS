@@ -34,10 +34,12 @@ const startGame = (socket: Socket, io: Server) => {
             ? { ...user, turns: user.turns++ }
             : user
         );
+        // switch to room.save
 
         await Room.updateOne({ roomId }, { users: updatedUsers }).exec();
 
         io.in(roomId).emit("start_game", {
+          readyToStart: true,
           playerTurnId: userTurn.userId,
           playerTurnName: userTurn.username,
         });

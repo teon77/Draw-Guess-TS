@@ -5,6 +5,13 @@ const initialState = {
   playerTurnId: "",
   playerTurnName: "",
   isDrawing: false,
+  drawing: "",
+  chosenWord: "",
+  wordOptions: {
+    easy: "",
+    medium: "",
+    hard: "",
+  },
 };
 
 export const gameSlice = createSlice({
@@ -19,9 +26,24 @@ export const gameSlice = createSlice({
     setIsDrawing: (state, action) => {
       state.isDrawing = action.payload;
     },
+    setDrawing: (state, action) => {
+      state.drawing = action.payload;
+    },
+    setChosenWord: (state, action) => {
+      state.chosenWord = action.payload;
+    },
+    setWordOptions: (state, action) => {
+      state.wordOptions = action.payload;
+    },
   },
 });
 
-export const { setGameData, setIsDrawing } = gameSlice.actions;
+export const {
+  setGameData,
+  setIsDrawing,
+  setDrawing,
+  setChosenWord,
+  setWordOptions,
+} = gameSlice.actions;
 
 export default gameSlice.reducer;

@@ -11,6 +11,9 @@ import joinRoom from "./controllers/room/joinRoom";
 import deleteRoom from "./controllers/room/deleteRoom";
 
 import startGame from "./controllers/game/startGame";
+import streamDrawing from "./controllers/game/streamDrawing";
+import setWords from "./controllers/game/setWords";
+import setChosenWord from "./controllers/game/setChosenWord";
 
 const app: Express = express();
 
@@ -44,6 +47,9 @@ const StartServer = () => {
     joinRoom(socket, io);
     deleteRoom(socket, io);
     startGame(socket, io);
+    streamDrawing(socket, io);
+    setWords(socket, io);
+    setChosenWord(socket, io);
   });
 
   app.use((req: Request, res: Response, next: NextFunction) => {

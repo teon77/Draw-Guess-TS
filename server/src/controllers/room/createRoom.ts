@@ -17,6 +17,8 @@ const createRoom = (socket: Socket, io: Server) => {
 
         const room = new Room({
           roomId: uuidv4(),
+          word: "",
+          hasStarted: false,
           users: [],
         });
 
@@ -52,6 +54,8 @@ const createRoom = (socket: Socket, io: Server) => {
           players: room.users,
         });
       } catch (err) {
+        console.log("err", err);
+
         io.to(socket.id).emit("fail", {
           message: "Could`nt create room, Internal server error",
         });

@@ -36,6 +36,20 @@ const joinRoom = (socket: Socket, io: Server) => {
           return;
         }
 
+        if (room.users.length >= 8) {
+          io.to(socket.id).emit("fail", {
+            message: "Room is full!",
+          });
+          return;
+        }
+
+        if (room.hasStarted) {
+          io.to(socket.id).emit("fail", {
+            message: "The game has already started!",
+          });
+          return;
+        }
+
         const user = new User({
           username,
           userId: socket.id,

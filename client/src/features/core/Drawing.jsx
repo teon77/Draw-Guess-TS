@@ -1,8 +1,12 @@
 import React, { useState, useRef } from "react";
 import { Stage, Layer, Line } from "react-konva";
+import { useDispatch, useSelector } from "react-redux";
 
-const Drawing = ({ setDrawing }) => {
+const Drawing = () => {
+  const dispatch = useDispatch();
+  const roomId = useSelector((state) => state.room.roomId);
   const [lines, setLines] = useState([]);
+
   const isDrawing = useRef(false);
 
   const handleMouseDown = (e) => {
@@ -29,12 +33,11 @@ const Drawing = ({ setDrawing }) => {
 
   const handleMouseUp = () => {
     isDrawing.current = false;
-  };
-
-  const doneDrawing = () => {
     const canvas = document.getElementsByTagName("canvas")[0];
-    setDrawing(canvas.toDataURL());
-    clearBoard();
+    dispatch({
+      type: "STREAM_DRAWING",
+      payload: { roomId, drawing: canvas.toDataURL() },
+    });
   };
 
   const clearBoard = () => {
@@ -46,7 +49,7 @@ const Drawing = ({ setDrawing }) => {
       <Stage
         width={300}
         height={300}
-        container=".drawing"
+        container=".Game_drawing_container__8INc0"
         onMouseDown={handleMouseDown}
         onMousemove={handleMouseMove}
         onMouseup={handleMouseUp}
@@ -66,7 +69,6 @@ const Drawing = ({ setDrawing }) => {
       </Stage>
       <div className="tool_bar">
         <button onClick={clearBoard}>Clear</button>
-        <button onClick={doneDrawing}>Done</button>
       </div>
     </>
   );

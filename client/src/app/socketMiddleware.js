@@ -18,7 +18,18 @@ export const socketMiddleware = (socket) => {
       case "START_GAME":
         socket.emit("start_game", payload);
         break;
-
+      case "STREAM_DRAWING":
+        socket.emit("stream_drawing", payload);
+        break;
+      case "SUBMIT_GUESS":
+        socket.emit("submit_guess", payload);
+        break;
+      case "SET_WORD_OPTIONS":
+        socket.emit("set_word_options", payload);
+        break;
+      case "SET_CHOSEN_WORD":
+        socket.emit("set_chosen_word", payload);
+        break;
       default:
         break;
     }

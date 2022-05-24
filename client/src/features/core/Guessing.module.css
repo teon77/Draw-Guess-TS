@@ -1,0 +1,18 @@
+.image_container{
+    display: grid;
+    place-items: center;
+    margin-top: 5%;
+}
+
+.guess_container{
+    display: flex;
+    justify-content: center;
+}
+
+.guess_container > * {
+    margin-left: 1%; 
+}
+
+img {
+    border: 5px solid aliceblue !important ;
+}

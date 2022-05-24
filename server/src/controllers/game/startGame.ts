@@ -1,5 +1,4 @@
 import Room from "../../models/Room";
-import User, { UserGameType } from "../../models/User";
 import { Server, Socket } from "socket.io";
 
 const startGame = (socket: Socket, io: Server) => {
@@ -36,7 +35,10 @@ const startGame = (socket: Socket, io: Server) => {
         );
         // switch to room.save
 
-        await Room.updateOne({ roomId }, { users: updatedUsers }).exec();
+        await Room.updateOne(
+          { roomId },
+          { users: updatedUsers, hasStarted: true }
+        ).exec();
 
         io.in(roomId).emit("start_game", {
           readyToStart: true,

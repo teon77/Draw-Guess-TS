@@ -1,5 +1,5 @@
 const words = {
-  easy: [
+  1: [
     "Bee",
     "Sea",
     "Bed",
@@ -27,7 +27,7 @@ const words = {
     "Door",
     "Shoe",
   ],
-  medium: [
+  2: [
     "Apple",
     "Lemon",
     "Water",
@@ -47,7 +47,7 @@ const words = {
     "wheat",
     "Bread",
   ],
-  hard: [
+  3: [
     "Strawberry",
     "Orange",
     "Banana",

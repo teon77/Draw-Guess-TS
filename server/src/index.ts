@@ -14,6 +14,7 @@ import startGame from "./controllers/game/startGame";
 import streamDrawing from "./controllers/game/streamDrawing";
 import setWords from "./controllers/game/setWords";
 import setChosenWord from "./controllers/game/setChosenWord";
+import submitGuess from "./controllers/game/submitGuess";
 
 const app: Express = express();
 
@@ -42,7 +43,6 @@ const StartServer = () => {
   });
 
   io.on("connection", (socket: Socket) => {
-    console.log(io.allSockets());
     createRoom(socket, io);
     joinRoom(socket, io);
     deleteRoom(socket, io);
@@ -50,6 +50,7 @@ const StartServer = () => {
     streamDrawing(socket, io);
     setWords(socket, io);
     setChosenWord(socket, io);
+    submitGuess(socket, io);
   });
 
   app.use((req: Request, res: Response, next: NextFunction) => {

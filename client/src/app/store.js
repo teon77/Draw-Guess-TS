@@ -3,9 +3,12 @@ import { socketMiddleware } from "./socketMiddleware";
 import roomReducer from "../features/reducers/roomSlice";
 import loginReducer from "../features/reducers/loginSlice";
 import gameReducer from "../features/reducers/gameSlice";
-import SocketClient from "./SocketClient";
 
-const socket = new SocketClient();
+import io from "socket.io-client";
+const port = process.env.PORT || 5000;
+const serverEndpoint = `http://localhost:${port}/`;
+
+const socket = io(serverEndpoint);
 
 export const store = configureStore({
   reducer: {

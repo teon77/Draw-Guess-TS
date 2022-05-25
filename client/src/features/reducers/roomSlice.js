@@ -12,10 +12,10 @@ export const roomSlice = createSlice({
   initialState,
   reducers: {
     setWaitingData: (state, action) => {
-      state.roomId = action.payload.roomId;
-      state.message = action.payload.message;
-      state.showError = action.payload.showError;
-      state.players = action.payload.players;
+      state.roomId = action.payload.roomId || state.roomId;
+      state.message = action.payload.message || state.message;
+      state.showError = action.payload.showError || state.showError;
+      state.players = action.payload.players || state.players;
     },
   },
 });

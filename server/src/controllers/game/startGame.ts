@@ -22,23 +22,16 @@ const startGame = (socket: Socket, io: Server) => {
           return;
         }
 
-        // TODO: just send of the users id at the start of the game
-        // determine which user should start the game
-        const userTurn = room.users.reduce((prev, curr) =>
-          prev.turns < curr.turns ? prev : curr
-        );
+        // get random user from the users array and update the turns
+        const userTurn =
+          room.users[Math.floor(Math.random() * room.users.length)];
+        room.users.forEach((user) => {
+          if (user.userId === userTurn.userId) {
+            user.turns += 1;
+          }
+        });
 
-        const updatedUsers = room.users.map((user) =>
-          user.userId === userTurn.userId
-            ? { ...user, turns: user.turns++ }
-            : user
-        );
-        // switch to room.save
-
-        await Room.updateOne(
-          { roomId },
-          { users: updatedUsers, hasStarted: true }
-        ).exec();
+        await room.save();
 
         io.in(roomId).emit("start_game", {
           readyToStart: true,

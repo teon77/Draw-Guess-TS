@@ -23,17 +23,16 @@ const setWords = (socket: Socket, io: Server) => {
           return;
         }
 
-        // get one random word from the each array in the words object
-        const easy = words.easy[Math.floor(Math.random() * words.easy.length)];
-        const medium =
-          words.medium[Math.floor(Math.random() * words.medium.length)];
-        const hard = words.hard[Math.floor(Math.random() * words.hard.length)];
+        // get random word from each array inside words object
+        const wordOptions = {
+          option1: words[1][Math.floor(Math.random() * words[1].length)],
+          option2: words[2][Math.floor(Math.random() * words[2].length)],
+          option3: words[3][Math.floor(Math.random() * words[3].length)],
+        };
 
         // send the words to the client
-        io.in(roomId).emit("set_word_options", {
-          easy,
-          medium,
-          hard,
+        io.to(socket.id).emit("set_word_options", {
+          wordOptions,
         });
       } catch (err) {
         io.to(roomId).emit("fail", {

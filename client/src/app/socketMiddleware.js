@@ -6,9 +6,6 @@ export const socketMiddleware = (socket) => {
     const { type, payload } = action;
 
     switch (type) {
-      case "SOCKET_CONNECT":
-        socket.connect();
-        break;
       case "CREATE_ROOM":
         socket.emit("create_room", payload);
         break;

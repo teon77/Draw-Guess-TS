@@ -37,17 +37,17 @@ const WordChoosing = () => {
         <div>
           <label>Easy</label>
           <br />
-          <button onClick={handleClick}>{wordOptions.easy}</button>
+          <button onClick={handleClick}>{wordOptions.option1}</button>
         </div>
         <div>
           <label>Medium</label>
           <br />
-          <button onClick={handleClick}>{wordOptions.medium}</button>
+          <button onClick={handleClick}>{wordOptions.option2}</button>
         </div>
         <div>
           <label>Hard</label>
           <br />
-          <button onClick={handleClick}>{wordOptions.hard}</button>
+          <button onClick={handleClick}>{wordOptions.option3}</button>
         </div>
       </div>
     </div>

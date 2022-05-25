@@ -3,7 +3,20 @@
     background-color: #2a2730;
     padding: 5px;
     color: rgb(227, 234, 255);
-    
+}
+
+.players_list_container{
+    display: grid;
+    place-items: center;
+}
+
+.information {
+    border: 4px solid #0091ff;
+    width:fit-content;
+    padding: 0.5%;
+}
+.information span {
+    display: block;
 }
 
 .players_list{
@@ -12,24 +25,30 @@
     justify-content: center;
     border: 4px solid #0091ff;
     padding-inline-start: 0;
-    padding: 0.5%;
+    padding: 2%;
 }
+
 
 
 .players_list li {
     display: flex;
     flex-direction: column;
-    margin: 0 10px;
     border: 2px solid aliceblue !important ;
     border-radius: 3px;
-    padding: 1%;
+    padding: 5px;
+    margin: 5px;
+}
+
+.players_list li span {
+    display: block;
 }
 
 .drawing_container {
     display: grid;
     place-items: center;
-    margin-top: 5%;
+    margin-top: 1%;
 }
+
 
 canvas {
     border: 5px solid aliceblue !important ;

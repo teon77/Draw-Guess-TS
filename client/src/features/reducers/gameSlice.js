@@ -8,9 +8,9 @@ const initialState = {
   drawing: "",
   chosenWord: "",
   wordOptions: {
-    easy: "",
-    medium: "",
-    hard: "",
+    option1: "",
+    option2: "",
+    option3: "",
   },
 };
 

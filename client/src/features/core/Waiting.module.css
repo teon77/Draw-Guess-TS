@@ -52,6 +52,10 @@
     font-size: larger;
 }
 
+.explain p {
+    width: 50%
+}
+
 .back_btn {
     background-color: #0091ff;
     color: rgb(227, 234, 255);

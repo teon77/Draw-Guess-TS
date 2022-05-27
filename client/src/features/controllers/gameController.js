@@ -39,6 +39,7 @@ const socketGameController = (socket, store) => {
       })
     );
     store.dispatch(setDrawing(""));
+    store.dispatch(setChosenWord(""));
     store.dispatch(
       setGameData({
         playerTurnId,

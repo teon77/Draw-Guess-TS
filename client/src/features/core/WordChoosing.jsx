@@ -26,30 +26,26 @@ const WordChoosing = () => {
     <div className={styles.words_page}>
       <div className={styles.explain}>
         <h1>Choose a word to draw</h1>
-        <p>
-          Remember, an "Easy" word will give you 1 point, <br />
-          a "Medium" word will give you 3 points, <br />
-          and a "Hard" word will give you 5 points. <br />
-          Click on a word to choose it.
-        </p>
       </div>
-      <div className={styles.word_choosing}>
-        <div>
-          <label>Easy</label>
-          <br />
-          <button onClick={handleClick}>{wordOptions.option1}</button>
+      {wordOptions && (
+        <div className={styles.word_choosing}>
+          <div>
+            <label>Easy</label>
+            <br />
+            <button onClick={handleClick}>{wordOptions.option1}</button>
+          </div>
+          <div>
+            <label>Medium</label>
+            <br />
+            <button onClick={handleClick}>{wordOptions.option2}</button>
+          </div>
+          <div>
+            <label>Hard</label>
+            <br />
+            <button onClick={handleClick}>{wordOptions.option3}</button>
+          </div>
         </div>
-        <div>
-          <label>Medium</label>
-          <br />
-          <button onClick={handleClick}>{wordOptions.option2}</button>
-        </div>
-        <div>
-          <label>Hard</label>
-          <br />
-          <button onClick={handleClick}>{wordOptions.option3}</button>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

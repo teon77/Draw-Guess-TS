@@ -2,7 +2,9 @@
 
 My implementation of the draw and guess game.
 The server is built using **Typescript** ,socket.io and mongoose.
-The game is served over a **React - redux Toolkit** application.
+The app is served with a **React - redux Toolkit** application,
+with the server handling logic about users, rooms and games.
+
 The game is available at <https://pic-guess.herokuapp.com/>
 
 ## Front-End

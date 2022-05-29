@@ -6,10 +6,10 @@ import gameReducer from "../features/reducers/gameSlice";
 
 import io from "socket.io-client";
 
-const port = process.env.PORT || 5000;
-const serverEndpoint = `http://localhost:${port}/`;
+// const port = process.env.PORT || 5000;
+// const serverEndpoint = `http://localhost:${port}/`;
 
-const socket = io(serverEndpoint);
+const socket = io();
 
 export const store = configureStore({
   reducer: {

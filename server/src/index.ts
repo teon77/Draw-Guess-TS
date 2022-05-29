@@ -1,3 +1,4 @@
+import path from "path";
 import express, { Express, Request, Response, NextFunction } from "express";
 import mongoose from "mongoose";
 import { config } from "./config/config";
@@ -33,6 +34,10 @@ const StartServer = () => {
   app.use(express.json());
   app.use(helmet());
   app.use(cors());
+  app.use(express.static(path.join(__dirname, "build")));
+  app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+  });
 
   const httpServer = createServer(app);
   const io = new Server(httpServer, {

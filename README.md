@@ -11,7 +11,7 @@ The game is available at <https://pic-guess.herokuapp.com/>
 ### Login
 component: <https://github.com/teon77/Draw-Guess/blob/main/client/src/core/Welcome.js>
 
-![alt text](https://github.com/teon77/Draw-Guess/blob/main/pictures/login.png "login view")
+![alt text](https://github.com/teon77/Draw-Guess-TS/blob/main/images/game_view.png?raw=true "login view")
 
 ### Waiting
 component: <https://github.com/teon77/Draw-Guess/blob/main/client/src/core/Waiting.js>

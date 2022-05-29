@@ -4,12 +4,13 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rimraf dist && tsc",
-    "preserve": "npm run build",
+    "build-ts": "tsc",
+    "postinstall": "npm run build-ts",
+    "start": "node dist/index.js",
     "serve": "cross-env NODE_ENV=development concurrently \"tsc --watch\" \"nodemon -q dist/index.js\"",
-    "prestart": "npm run build",
-    "start": "cross-env NODE_ENV=production node dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch-node": "nodemon dist/index.js",
+    "watch-ts": "tsc -w",
+    "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
   "keywords": [],
   "author": "",

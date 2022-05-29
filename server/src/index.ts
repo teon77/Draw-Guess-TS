@@ -22,7 +22,7 @@ const app: Express = express();
 mongoose
   .connect(config.mongo.url, { retryWrites: true, w: "majority" })
   .then(() => {
-    console.log("MongoDB connected");
+    console.log("MongoDB connected successfully");
     StartServer();
   })
   .catch((err) => {

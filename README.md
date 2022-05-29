@@ -8,15 +8,15 @@ The game is available at <https://pic-guess.herokuapp.com/>
 ## Front-End
 
 
-### Login
-component: <https://github.com/teon77/Draw-Guess/blob/main/client/src/core/Welcome.js>
+### Login View
+component: <https://github.com/teon77/Draw-Guess-TS/blob/main/client/src/features/core/Home.jsx>
 
-![alt text](https://github.com/teon77/Draw-Guess-TS/blob/main/images/game_view.png?raw=true "login view")
+![alt text](https://github.com/teon77/Draw-Guess-TS/blob/main/images/login_view.png?raw=true "login view")
 
-### Waiting
-component: <https://github.com/teon77/Draw-Guess/blob/main/client/src/core/Waiting.js>
-![alt text](https://github.com/teon77/Draw-Guess/blob/main/pictures/waitingRoom.png "waiting view")
+### Room View
+component: <https://github.com/teon77/Draw-Guess-TS/blob/main/client/src/features/core/Waiting.jsx>
+![alt text](https://github.com/teon77/Draw-Guess-TS/blob/main/images/room_view.png?raw=true "waiting view")
 
-### Drawing  
-component: <https://github.com/teon77/Draw-Guess/blob/main/client/src/core/Drawing.js>
-![alt text](https://github.com/teon77/Draw-Guess/blob/main/pictures/drawingView.png "drawing view")
+### Game View  
+component: <https://github.com/teon77/Draw-Guess-TS/blob/main/client/src/features/core/Game.jsx>
+![alt text](https://github.com/teon77/Draw-Guess-TS/blob/main/images/game_view.png?raw=true "drawing view")
